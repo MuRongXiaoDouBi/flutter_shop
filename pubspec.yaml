@@ -27,6 +27,7 @@ dependencies:
   flutter_swiper : ^1.1.1
   flutter_screenutil: ^1.0.2
   url_launcher: ^5.0.1
+  flutter_easyrefresh: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

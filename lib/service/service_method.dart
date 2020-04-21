@@ -10,22 +10,41 @@ enum MethodType { GET, POST }
 Future getHomePageContent() async {
   var response;
   try {
-    response = await request(url: 'homePageContext', method: 'POST');
+    response = await request('homePageContext', method: 'POST');
     return response;
   } catch (e) {
     return print('ERROR:======>${e}');
   }
 }
 
-Future getHomePageBelowConten() async {}
+Future getHomePageBelowConten({formData}) async {
+  var response;
+  try {
+    response = await request('homePageBelowConten', method: 'POST', formData: formData);
+    return response;
+  } catch (e) {
+    return print('ERROR:======>${e}');
+  }
+}
 
-Future request({String url, String method, formData}) async {
+Future getCategory() async {
+  var response;
+  try {
+    response = await request('getCategory', method: 'POST');
+    return response;
+  } catch (e) {
+    return print('ERROR:======>${e}');
+  }
+}
+
+Future request(String url, {String method, formData}) async {
   try {
     print('开始获取数据...............');
     Response response;
     Dio dio = new Dio(BaseOptions(
         method: method,
-        contentType: Headers.formUrlEncodedContentType, connectTimeout: 5000));
+        contentType: Headers.formUrlEncodedContentType,
+        connectTimeout: 5000));
     if (formData == null) {
       response = await dio.post(servicePath[url]);
     } else {
